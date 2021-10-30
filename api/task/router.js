@@ -18,6 +18,7 @@ router.get(`/`, (req, res) => {
 router.post(`/`, (req, res) => {
 	Resource.createTasks(req.body)
 		.then((task) => {
+			task.task_completed = !!task.task_completed;
 			res.status(201).json(task);
 		})
 		.catch((err) => res.status(400).json({ message: err.message }));
