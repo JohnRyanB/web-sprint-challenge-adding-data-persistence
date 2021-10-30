@@ -10,7 +10,7 @@ You are not allowed to collaborate during the sprint challenge.
 
 ## Project Set Up
 
-- [ ] Run `npm install` to install your dependencies.
+- [*] Run `npm install` to install your dependencies.
 - [ ] Run tests locally executing `npm test`.
 
 ## Project Instructions
@@ -21,8 +21,8 @@ In this project you will be given a set of requirements and must design a databa
 
 ### Files to Complete
 
-1. `package.json`
-2. `index.js`
+1. `package.json`\*
+2. `index.js`\*
 3. `api/server.js`
 4. `model.js` inside `api/project`, `api/resource` and `api/task`
 5. `router.js` inside `api/project`, `api/resource` and `api/task`
@@ -31,11 +31,11 @@ In this project you will be given a set of requirements and must design a databa
 
 ### Required Dependencies
 
-The project needs some additional NPM dependencies in order to work.
+The project needs some additional NPM dependencies in order to work.\*
 
 ### Required Scripts
 
-Add `"start"`. `"server"`, `"migrate"` and `"rollback"` scripts to the `package.json` file.
+Add `"start"`. `"server"`, `"migrate"` and `"rollback"` scripts to the `package.json` file.\*
 
 ### Required Tables
 
@@ -43,50 +43,55 @@ Build the migration(s) in Knex inside the `data/migrations` folder using appropr
 
 - [ ] A **project** is what needs to be done and is stored in a `projects` table with the following columns:
 
-  - [ ] `project_id` - primary key
-  - [ ] `project_name` - required
-  - [ ] `project_description` - optional
-  - [ ] `project_completed` - the database defaults it to `false` (integer 0) if not provided
+  - [*] `project_id` - primary key
+  - [*] `project_name` - required
+  - [*] `project_description` - optional
+  - [*] `project_completed` - the database defaults it to `false` (integer 0) if not provided
 
 - [ ] A **resource** is anything needed to complete a project and is stored in a `resources` table with the following columns:
 
-  - [ ] `resource_id` - primary key
-  - [ ] `resource_name` - required and unique
-  - [ ] `resource_description` - optional
+  - [*] `resource_id` - primary key
+  - [*] `resource_name` - required and unique
+  - [*] `resource_description` - optional
 
 - [ ] A **task** is one of the steps needed to complete a project and is stored in a `tasks` table with the following columns:
 
-  - [ ] `task_id` - primary key
-  - [ ] `task_description` - required
-  - [ ] `task_notes` - optional
-  - [ ] `task_completed` - the database defaults it to `false` (integer 0) if not provided
-  - [ ] `project_id` - required and points to an actual `project_id` in the `projects` table
+  - [*] `task_id` - primary key
+  - [*] `task_description` - required
+  - [*] `task_notes` - optional
+  - [*] `task_completed` - the database defaults it to `false` (integer 0) if not provided
+  - [*] `project_id` - required and points to an actual `project_id` in the `projects` table
 
-- [ ] A **resource assignment** connects a resource and a project, and is stored in a `project_resources` table. You decide what columns to use.
+- [*] A **resource assignment** connects a resource and a project, and is stored in a `project_resources` table. You decide what columns to use.
 
 ### Required Endpoints
 
 Build an API inside the `api` folder with endpoints for:
 
-- [ ] `[POST] /api/resources`
+- [*] `[POST] /api/resources`
+
   - Example of response body: `{"resource_id":1,"resource_name":"foo","resource_description":null}`
 
-- [ ] `[GET] /api/resources`
+- [*] `[GET] /api/resources`
+
   - Example of response body: `[{"resource_id":1,"resource_name":"foo","resource_description":null}]`
 
-- [ ] `[POST] /api/projects`
+- [*] `[POST] /api/projects`
+
   - Even though `project_completed` is stored as an integer, the API uses booleans when interacting with the client
   - Example of response body: `{"project_id":1,"project_name":"bar","project_description":null,"project_completed":false}`
 
-- [ ] `[GET] /api/projects`
+- [*] `[GET] /api/projects`
+
   - Even though `project_completed` is stored as an integer, the API uses booleans when interacting with the client
   - Example of response body: `[{"project_id":1,"project_name":"bar","project_description":null,"project_completed":false}]`
 
-- [ ] `[POST] /api/tasks`
+- [*] `[POST] /api/tasks`
+
   - Even though `task_completed` is stored as an integer, the API uses booleans when interacting with the client
   - Example of response body: `{"task_id":1,"task_description":"baz","task_notes":null,"task_completed":false,"project_id:1}`
 
-- [ ] `[GET] /api/tasks`
+- [*] `[GET] /api/tasks`
   - Even though `task_completed` is stored as an integer, the API uses booleans when interacting with the client
   - Each task must include `project_name` and `project_description`
   - Example of response body: `[{"task_id":1,"task_description":"baz","task_notes":null,"task_completed":false,"project_name:"bar","project_description":null}]`
@@ -109,7 +114,7 @@ Build an API inside the `api` folder with endpoints for:
 
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
-1. Explain the difference between Relational Databases and SQL.
-2. Why do tables need a Primary Key?
-3. What is the name given to a table column that references the Primary Key on another table?
-4. What do we need in order to have a _many to many_ relationship between two tables?
+1. Explain the difference between Relational Databases and SQL. Relational Databases are the databases we create that utilize foreign and primary keys to allow us to access data from multiple tables on a single call. SQL is the language we use to communicate with the database.
+2. Why do tables need a Primary Key? The Primary Key is used as a reference by Foreign Keys on other tables and it ensures we can access our tables by row in a standardized way
+3. What is the name given to a table column that references the Primary Key on another table? Foreign Key
+4. What do we need in order to have a _many to many_ relationship between two tables? A Join table with a primary key and foreign keys that reference the two tables
